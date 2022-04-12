@@ -3,6 +3,7 @@ package br.unifor.dtec.Contatos.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,7 @@ public class ContatoController {
 	@Autowired	// Anotação do JPA que indica "injeção de dependência". Instancia automaticamente;
 	private ContatoRepository repository;
 	
+	// END POINT:
 	@GetMapping		// Anotação do JPA que indica o "verbo" http, no caso, é um GET;
 	public List<Contato> findAll() {
 		List<Contato> resultado = repository.findAll();
@@ -32,10 +34,23 @@ public class ContatoController {
 		return resultado;
 	}
 	
-	@PostMapping	(value = "/{id}")	// Anotação do JPA que indica o "verbo" http, no caso, é um POST;
+	@PostMapping(value = "/new")	// Anotação do JPA que indica o "verbo" http, no caso, é um POST;
 	public Contato insert(@RequestBody Contato contato) {
 		Contato resultado = repository.save(contato);
 		return resultado;
+	}
+	
+	@DeleteMapping("/{id}")	// Anotação do JPA que indica o "verbo" http, no caso, é um DELETE/id;
+	public void deleteContato(@PathVariable Long id) {
+		repository.deleteById(id);
+		
+	}
+	
+	@PostMapping(value = "/{id}")	// Anotação do JPA que indica o "verbo" http, no caso, é um POST;
+	public Contato update(@RequestBody Contato contato) {
+		Contato resultado = repository.save(contato);
+		return resultado;
+		
 	}
 
 }
