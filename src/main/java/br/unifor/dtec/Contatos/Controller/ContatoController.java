@@ -22,30 +22,35 @@ public class ContatoController {
 	private ContatoRepository repository;
 	
 	// END POINT:
+	// Busca todos:
 	@GetMapping		// Anotação do JPA que indica o "verbo" http, no caso, é um GET;
 	public List<Contato> findAll() {
 		List<Contato> resultado = repository.findAll();
 		return resultado;
 	}
 	
+	// Busca por id:
 	@GetMapping	(value = "/{id}")	// Anotação do JPA que indica o "verbo" http, no caso, é um GET/id;
 	public Contato findById(@PathVariable Long id) {
 		Contato resultado = repository.findById(id).get();
 		return resultado;
 	}
 	
+	// Cadastro:
 	@PostMapping(value = "/new")	// Anotação do JPA que indica o "verbo" http, no caso, é um POST;
 	public Contato insert(@RequestBody Contato contato) {
 		Contato resultado = repository.save(contato);
 		return resultado;
 	}
 	
+	// Exclusão por id:
 	@DeleteMapping("/{id}")	// Anotação do JPA que indica o "verbo" http, no caso, é um DELETE/id;
 	public void deleteContato(@PathVariable Long id) {
 		repository.deleteById(id);
 		
 	}
 	
+	// Update/Editar:
 	@PostMapping(value = "/{id}")	// Anotação do JPA que indica o "verbo" http, no caso, é um POST;
 	public Contato update(@RequestBody Contato contato) {
 		Contato resultado = repository.save(contato);
