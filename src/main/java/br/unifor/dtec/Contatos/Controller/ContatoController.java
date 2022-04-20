@@ -51,7 +51,7 @@ public class ContatoController {
 	}
 	
 	// Update/Editar:
-	@PostMapping(value = "/{id}")	// Anotação do JPA que indica o "verbo" http, no caso, é um POST;
+	@PutMapping(value = "/{id}")	// Anotação do JPA que indica o "verbo" http, no caso, é um POST;
 	public Contato update(@RequestBody Contato contato) {
 		Contato resultado = repository.save(contato);
 		return resultado;
