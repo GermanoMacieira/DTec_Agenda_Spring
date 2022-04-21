@@ -1,6 +1,6 @@
-package br.unifor.dtec.contatos.entity.dto;
+package br.unifor.dtec.contatos.model.dto;
 
-import br.unifor.dtec.contatos.entity.Contato;
+import br.unifor.dtec.contatos.model.Contato;
 
 public class ContatoDto {
 	

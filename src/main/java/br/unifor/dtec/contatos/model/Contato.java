@@ -1,4 +1,4 @@
-package br.unifor.dtec.contatos.entity;
+package br.unifor.dtec.contatos.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
