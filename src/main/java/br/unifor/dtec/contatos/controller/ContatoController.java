@@ -18,6 +18,8 @@ import br.unifor.dtec.contatos.service.ContatoService;
 
 /* A camada de controle é responsável por intermediar as requisições enviadas pelo View com as respostas 
  * fornecidas pelo Model, processando os dados que o usuário informou e repassando para outras camadas.
+ * Observe que a classe ContatoController utiliza-se em seus métodos (GET, POST, DELETE e UPDATE) funções
+ * provenientes da interface CotatoService, que por sua vez possuem somente as assinaturas dessas funções;
  */
 
 @RestController		// Anotação do JPA que indica um controlador Rest: vai responder por requisições;
