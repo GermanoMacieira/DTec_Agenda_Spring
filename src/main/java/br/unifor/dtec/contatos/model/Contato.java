@@ -6,13 +6,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
+@Entity		//Anotação do JPA que indica que a classe será uma entidade no banco (será uma tabela no banco de dados);
 @Table(name = "tb_contato")	//Anotação do JPA que nomeia o nome da tabela no banco;
 public class Contato {
 	
 	// ATRIBUTOS:
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)	// Anotação do JPA que indica o Auto incremento do id na tabela do banco de dados;
+	@Id		// Anotação que indica informa que o atributo será a chave primária da tabela;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)	// Anotação que indica o Auto incremento do id na tabela do banco de dados;
 	private Long idContato;
 	// @NotEmpty(message = "Nome do contato é obrigatório")
 	private String nomeContato;
