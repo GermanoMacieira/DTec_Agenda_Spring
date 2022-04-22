@@ -16,6 +16,10 @@ import br.unifor.dtec.contatos.model.Contato;
 import br.unifor.dtec.contatos.model.dto.ContatoDto;
 import br.unifor.dtec.contatos.service.ContatoService;
 
+/* A camada de controle é responsável por intermediar as requisições enviadas pelo View com as respostas 
+ * fornecidas pelo Model, processando os dados que o usuário informou e repassando para outras camadas.
+ */
+
 @RestController		// Anotação do JPA que indica um controlador Rest: vai responder por requisições;
 @RequestMapping(value = "/contatos")
 public class ContatoController {
