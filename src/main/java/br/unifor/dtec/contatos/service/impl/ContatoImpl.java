@@ -18,8 +18,7 @@ import br.unifor.dtec.contatos.service.ContatoService;
 @Service
 public class ContatoImpl implements ContatoService {
 
-	@Autowired // Anotação do JPA que indica "injeção de dependência". Instancia
-				// automaticamente;
+	@Autowired // Anotação do JPA que indica "injeção de dependência". Instancia automaticamente;
 	private ContatoRepository repository;
 
 	@Override
