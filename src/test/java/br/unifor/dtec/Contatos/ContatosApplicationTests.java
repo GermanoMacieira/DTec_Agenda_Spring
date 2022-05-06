@@ -1,5 +1,6 @@
 package br.unifor.dtec.Contatos;
 
+import br.unifor.dtec.contatos.ContatosApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -7,7 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 class ContatosApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void main() {
+		ContatosApplication.main(new String[] {});
 	}
 
 }
