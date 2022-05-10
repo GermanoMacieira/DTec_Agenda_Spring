@@ -26,7 +26,7 @@ import br.unifor.dtec.contatos.service.ContatoService;
 @RequestMapping(value = "/contatos")
 public class ContatoController {
 	
-	@Autowired
+	@Autowired		// Anotação do JPA que indica "injeção de dependência". Instancia automaticamente;
 	private ContatoService contatoService;
 	
 	// END POINTS:
@@ -39,7 +39,7 @@ public class ContatoController {
 	}
 	
 	// Listar contato por id:
-	@GetMapping	(value = "/list/{idContato}")	// Anotação do JPA que indica o "verbo" http, no caso, é um GET/id;
+	@GetMapping	("{idContato}")	// Anotação do JPA que indica o "verbo" http, no caso, é um GET/id;
 	public ContatoDto listarContato(@PathVariable("idContato") long idContato) {
 		return this.contatoService.listarContato(idContato);
 	}

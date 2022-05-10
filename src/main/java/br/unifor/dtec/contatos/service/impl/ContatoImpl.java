@@ -18,15 +18,26 @@ import br.unifor.dtec.contatos.service.ContatoService;
 @Service
 public class ContatoImpl implements ContatoService {
 
-	@Autowired // Anotação do JPA que indica "injeção de dependência". Instancia automaticamente;
+	@Autowired // Anotação do JPA que indica "injeção de dependência". Instancia
+				// automaticamente;
 	private ContatoRepository repository;
+
 
 	@Override
 	public ContatoDto listarContato(long idContato) {
-			ContatoDto contato = new ContatoDto(repository.getById(idContato));
-			return contato;
+		Optional<Contato> optionalContato = this.repository.findById(idContato);
+		return new ContatoDto(optionalContato.get());
 	}
-	
+
+	/*
+	// OUTRA FORMA DE CONSTRUÇÃO DO MÉTODO:
+	@Override
+	public ContatoDto listarContato(long id) {
+		Optional<Contato> optionalContato = this.repository.findById(id);
+		return optionalContato.map(x -> new ContatoDto(optionalContato.get()));
+
+	 */
+
 	@Override
 	public List<Contato> listarContatosCadastrados() {
 		return this.repository.findAll();
@@ -39,12 +50,14 @@ public class ContatoImpl implements ContatoService {
 
 	@Override
 	public void atualizarContato(long idContato, Contato contato) {
-		Optional<Contato> cadastrar = repository.findById(idContato);
+		Optional<Contato> optionalContato = repository.findById(idContato);
 
-		if (cadastrar.isPresent()) {
-			cadastrar.get().setIdContato(contato.getIdContato());
-			cadastrar.get().setNomeContato(contato.getNomeContato());
-			repository.save(cadastrar.get());
+		if (optionalContato.isPresent()) {
+			optionalContato.get().setIdContato(contato.getIdContato());
+			optionalContato.get().setNomeContato(contato.getNomeContato());
+			optionalContato.get().setEnderecoContato(contato.getEnderecoContato());
+			optionalContato.get().setTelefoneContato(contato.getTelefoneContato());
+			repository.saveAndFlush(optionalContato.get());
 		}
 
 	}
@@ -53,7 +66,7 @@ public class ContatoImpl implements ContatoService {
 	public void apagarContato(long idContato) { 
 		try {
 			this.repository.deleteById(idContato); 
-		} catch(Exception e){
+		} catch(Exception ex){
 			System.out.println("Id não encontrado!");
 		
 		}

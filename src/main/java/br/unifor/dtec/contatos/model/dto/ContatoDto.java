@@ -1,6 +1,10 @@
 package br.unifor.dtec.contatos.model.dto;
 
 import br.unifor.dtec.contatos.model.Contato;
+
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 /* DTO = data transfer object;
  * OBS: Não é uma boa prática devolver os dados das entidades/modelos (classe de domínio);
  * Geralmente, controi-se uma classe secundária(DTO) para retornar as informações apropriadas e com mais segurança.
